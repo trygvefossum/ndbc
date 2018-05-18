@@ -119,18 +119,36 @@ class Station(object):
                 else:
                     continue
 
-        self.time = np.array(self.time)
-        self.wdir = np.array(self.wdir)
-        self.wspd = np.array(self.wspd)
-        self.gst = np.array(self.gst)
-        self.wvht = np.array(self.wvht)
-        self.dpd = np.array(self.dpd)
-        self.apd = np.array(self.apd)
-        self.mwd = np.array(self.mwd)
-        self.pres = np.array(self.pres)
-        self.atmp = np.array(self.atmp)
-        self.wtmp = np.array(self.wtmp)
-        self.dewp = np.array(self.dewp)
+        # Find start
+        counter1 = 0
+        for i in range(0, len(self.time)):
+            delta_time = self.time[i] - starttime
+            if delta_time.days == 0 and delta_time.seconds <= 3000:
+                break
+            else:
+                counter1 += 1
+
+        # Find end
+        counter = 0
+        for i in range(0, len(self.time)):
+            delta_time = self.time[i] - endtime
+            if  delta_time.days == 0 and delta_time.seconds <= 3000:
+                break
+            else:
+                counter += 1
+
+        self.time = np.array(self.time[counter1:counter])
+        self.wdir = np.array(self.wdir[counter1:counter])
+        self.wspd = np.array(self.wspd[counter1:counter])
+        self.gst = np.array(self.gst[counter1:counter])
+        self.wvht = np.array(self.wvht[counter1:counter])
+        self.dpd = np.array(self.dpd[counter1:counter])
+        self.apd = np.array(self.apd[counter1:counter])
+        self.mwd = np.array(self.mwd[counter1:counter])
+        self.pres = np.array(self.pres[counter1:counter])
+        self.atmp = np.array(self.atmp[counter1:counter])
+        self.wtmp = np.array(self.wtmp[counter1:counter])
+        self.dewp = np.array(self.dewp[counter1:counter])
 
     def _get_stdmet_realtime(self):
         """
@@ -177,3 +195,7 @@ class Station(object):
         self.vis = np.array(self.vis)
         self.ptdy = np.array(self.ptdy)
         self.tide = np.array(self.tide)
+
+
+
+
