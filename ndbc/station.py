@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 import gzip
 import numpy as np
 import requests
-import urllib
+from urllib import urlopen
+from urllib import urlretrieve
 
 _BASEURL = 'http://www.ndbc.noaa.gov/data'
 _SENSOR_URL = _BASEURL+'/stations/buoyht.txt'
@@ -73,7 +74,7 @@ class Station(object):
                 filename = self.id+str(time.month)+str(time.year)+'.txt.gz'
                 fileurl = _RECENT_URL+time.strftime('%b')+'/'+filename
 
-            f = gzip.open(urllib.request.urlopen(fileurl))
+            f = gzip.open(urlretrieve(fileurl)[0], mode='r:')
 
             if time.year >= 2007:
                 datastart = 2
