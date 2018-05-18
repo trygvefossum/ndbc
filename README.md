@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/wavebitscientific/ndbc.svg?branch=master)](https://travis-ci.org/wavebitscientific/ndbc)
 [![GitHub issues](https://img.shields.io/github/issues/wavebitscientific/ndbc.svg)](https://github.com/wavebitscientific/ndbc/issues)
 
-A Python interface to National Data Buoy Center data. Forked from Wavebit Scientific.
+A Python interface to National Data Buoy Center data. Forked from Wavebit Scientific and modified to work in python 2.7.
 
 ## Getting started
 
