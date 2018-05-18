@@ -1,14 +1,14 @@
-# ndbc
+# ndbc - python 2.7
 
 [![Build Status](https://travis-ci.org/wavebitscientific/ndbc.svg?branch=master)](https://travis-ci.org/wavebitscientific/ndbc)
 [![GitHub issues](https://img.shields.io/github/issues/wavebitscientific/ndbc.svg)](https://github.com/wavebitscientific/ndbc/issues)
 
-A Python interface to National Data Buoy Center data.
+A Python interface to National Data Buoy Center data. Forked from Wavebit Scientific.
 
 ## Getting started
 
 ```
-pip install git+https://github.com/wavebitscientific/ndbc
+pip install git+https://github.com/trygvefossum/ndbc
 ```
 
 ## Usage
