@@ -122,12 +122,12 @@ class Station(object):
         def nearest_ind(items, pivot):
             time_diff = np.abs([date - pivot for date in items])
             return time_diff.argmin(0)
-        
-        # Find start        
+
+        # Find start
         counter1 = nearest_ind(self.time, starttime)
 
         # Find end
-        counter = nearest_ind(self.time, endtimetime)
+        counter = nearest_ind(self.time, endtime)
 
         time_difference = endtime - starttime
         if np.abs(counter - counter1) > (24*int(time_difference.days)):
