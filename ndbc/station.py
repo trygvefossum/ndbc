@@ -119,23 +119,19 @@ class Station(object):
                 else:
                     continue
 
-        # Find start
-        counter1 = 0
-        for i in range(0, len(self.time)):
-            delta_time = self.time[i] - starttime
-            if delta_time.days == 0 and delta_time.seconds <= 3000:
-                break
-            else:
-                counter1 += 1
+        def nearest_ind(items, pivot):
+            time_diff = np.abs([date - pivot for date in items])
+            return time_diff.argmin(0)
+        
+        # Find start        
+        counter1 = nearest_ind(self.time, starttime)
 
         # Find end
-        counter = 0
-        for i in range(0, len(self.time)):
-            delta_time = self.time[i] - endtime
-            if  delta_time.days == 0 and delta_time.seconds <= 3000:
-                break
-            else:
-                counter += 1
+        counter = nearest_ind(self.time, endtimetime)
+
+        time_difference = endtime - starttime
+        if np.abs(counter - counter1) > (24*int(time_difference.days)):
+            counter = counter1 + (23 * int(time_difference.days))
 
         self.time = np.array(self.time[counter1:counter])
         self.wdir = np.array(self.wdir[counter1:counter])
@@ -195,7 +191,4 @@ class Station(object):
         self.vis = np.array(self.vis)
         self.ptdy = np.array(self.ptdy)
         self.tide = np.array(self.tide)
-
-
-
 
